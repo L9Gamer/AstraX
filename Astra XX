@@ -1,0 +1,133 @@
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "AstraX";
+    Text = "Free Version Loaded";
+    Time = 10;
+    Icon = "rbxassetid://505845268";
+})
+
+wait(1.3)
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Astra X", "Ocean")
+local Main = Window:NewTab("Main")
+--MAIN
+local FakeMacro = Main:NewSection("FakeMacro")
+local UIS = game:GetService('UserInputService')
+FakeMacro:NewButton("Fake Macro Hold Q", "FakeMacro", function()
+UIS.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Q then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 160
+    end
+end)
+
+UIS.InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Q then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end
+end)
+end)
+local Fly = Main:NewSection("Fly")
+Fly:NewButton("Fly", "Makes the Player Fly", function()
+    
+    end)
+
+local Misc = Window:NewTab("Misc")
+--MISC
+local FakeKick = Misc:NewSection("Kick YourSelf")
+FakeKick:NewTextBox("Kick Yourself", "Kick yourself for any reason you want", function(txt)
+game.Players.LocalPlayer:Kick(txt)
+end)
+local FakeBan = Misc:NewSection("Fake Ban YourSelf")
+FakeBan:NewButton("Fake Ban", "Click to get a fake ban (this wont really ban you)", function()
+game.Players.LocalPlayer:Kick("User BANNED")
+end)
+local Chat = Misc:NewSection("ChatASecretWord")
+Chat:NewButton("Chat", "", function()
+    while true do 
+        game.Players.LocalPlayer:Chat("AstraX On Top (Daddy L9G)")
+    end
+end)
+
+
+local Player = Window:NewTab("Player")
+--PLAYER
+local PlayerSection = Player:NewSection("PlayerSpeed")
+PlayerSection:NewSlider("Speed", "Changes the Players Speed", 700, 16, function(s) 
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+local PlayerSection2 = Player:NewSection("PlayerJumpPower")
+PlayerSection2:NewSlider("JumpPower", "Changes the Players Jump Power", 500, 50, function(s) 
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+local Teleports = Window:NewTab("Teleports")
+--TELEPORTS
+local TeleportSection = Teleports:NewSection("Locations")
+TeleportSection:NewButton("Bank", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-444.248505, 38.9965744, -283.196777, 0.0368181579, -4.65434518e-08, -0.999321997, -5.54903146e-09, 1, -4.67794727e-08, 0.999321997, 7.26760296e-09, 0.0368181579)
+end)
+TeleportSection:NewButton("DownHill", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-581.348816, 8.31280231, -737.771973, 0.994876206, 8.73719372e-08, 0.101100661, -8.96185526e-08, 1, 1.76797137e-08, -0.101100661, -2.66496212e-08, 0.994876206)
+end)
+TeleportSection:NewButton("UpHill", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(475.022003, 48.0050011, -603.737, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+TeleportSection:NewButton("Sewers", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(112.622002, -26.2119999, -277.321014, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+TeleportSection:NewButton("AdminBase", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-964, -48, -1014, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+TeleportSection:NewButton("School", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-652, 22, 255, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+TeleportSection:NewButton("TacoShop", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(546.945984, 51.0610008, -493.325012, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+TeleportSection:NewButton("FoodStore (Bank)", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-333.492065, 23.6826477, -292.959625, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+TeleportSection:NewButton("FoodStore (Park)", "", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(301.780121, 49.2826538, -619.999634, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+local Target = Window:NewTab("Target")
+--Target
+local TargetSection = Target:NewSection("Target")
+
+TargetSection:NewTextBox("Target Username", "teleports you to your target", function(txt)
+	print("Comming Soon")
+end)
+
+
+
+local UI = Window:NewTab("UI")
+--UI
+local ToggleKey = UI:NewSection("ToggleKey")
+ToggleKey:NewKeybind("Toggle KeyBind", "The key that shows and hides the gui", Enum.KeyCode.V, function()
+Library:ToggleUI()
+end)
+local customize = UI:NewSection("customize")
+local themes = {
+SchemeColor = Color3.fromRGB(0,255,255),
+Background = Color3.fromRGB(0, 0, 0),
+Header = Color3.fromRGB(0, 0, 0),
+TextColor = Color3.fromRGB(255,255,255),
+ElementColor = Color3.fromRGB(20, 20, 20)
+}
+for theme, color in pairs(themes) do
+customize:NewColorPicker(theme, "Change your "..theme, color, function(color3)
+    Library:ChangeColor(theme, color3)
+end)
+end
+
+
+
+
+
+local Credits = Window:NewTab("Credits")
+--CREDITS
+local SectionIDK = Credits:NewSection("Script Owner = L9G")
+SectionIDK:NewButton("Discord", "Our Discord Server", function()
+setclipboard(tostring("ERROR 00001"))
+end)
